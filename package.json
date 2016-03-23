@@ -1,0 +1,28 @@
+{
+  "name": "rnd",
+  "version": "1.0.2",
+  "description": "Random string generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/modulesio/rnd.git"
+  },
+  "keywords": [
+    "random",
+    "string",
+    "generator"
+  ],
+  "author": "a@modules.io",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/modulesio/rnd/issues"
+  },
+  "homepage": "https://github.com/modulesio/rnd#readme",
+  "dependencies": {
+    "random-word-generator": "^0.9.9",
+    "randopeep": "^0.2.5"
+  }
+}
