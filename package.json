@@ -1,6 +1,6 @@
 {
   "name": "rnd",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Random string generator",
   "main": "index.js",
   "scripts": {
