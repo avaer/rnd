@@ -1,10 +1,10 @@
 "use strict";
 
 const randopeep = require('randopeep');
-const NameGen = require('./lib/namegen/namegen.js');
+const NameGen = require('./lib/namegen-roguelike/namegen.js');
 
 const wordsData = require('./data/compiled.json');
-const roguelikeNames = require('./lib/namegen/roguelikenames.js');
+const roguelikeNames = require('./lib/namegen-roguelike/roguelikenames.js');
 
 const NAME_ORIGINS = ['dark/elven', 'dwarven', 'elven', 'english', 'germanic', 'japanese', 'orcish', 'spanish', 'netrunner'];
 
