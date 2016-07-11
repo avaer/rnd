@@ -2,6 +2,7 @@
 
 const randopeep = require('randopeep');
 const NameGen = require('./lib/namegen-roguelike/namegen.js');
+const namegen = require('./lib/namegen-planet/namegen.js');
 
 const wordsData = require('./data/compiled.json');
 const roguelikeNames = require('./lib/namegen-roguelike/roguelikenames.js');
@@ -29,6 +30,9 @@ api.fakeName = opts => {
 
   const gender = opts.gender || (Math.random() < 0.5 ? 'male' : 'female');
   return _capitalize(nameGen.getName(gender));
+};
+api.lastName = () => {
+  return _capitalize(namegen(1)[0]);
 };
 api.adjective = _randomGetter(ADJECTIVES);
 api.adverb = _randomGetter(ADVERBS);
