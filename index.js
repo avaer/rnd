@@ -32,7 +32,10 @@ api.fakeName = opts => {
   return _capitalize(nameGen.getName(gender));
 };
 api.lastName = () => {
-  return _capitalize(namegen(1)[0]);
+  const names = namegen(16);
+  const nameIndex = Math.floor(Math.random() * names.length);
+  const name = names[nameIndex];
+  return _capitalize(name);
 };
 api.adjective = _randomGetter(ADJECTIVES);
 api.adverb = _randomGetter(ADVERBS);
