@@ -15,6 +15,10 @@ rnd.fakeName({gender: 'female'});
 // 'Polyth'
 // A "fake"-looking name whose only property is that it should be reasonably pronounceable.
 
+rnd.lastName();
+// 'Asporix'
+// A "last"-looking name suitable as a pronounceable surname.
+
 rnd.noun();
 // 'binocle'
 rnd.verb();
