@@ -28,7 +28,7 @@ api.fakeName = opts => {
   opts = opts || {};
 
   const gender = opts.gender || (Math.random() < 0.5 ? 'male' : 'female');
-  return nameGen.getName(gender);
+  return _capitalize(nameGen.getName(gender));
 };
 api.adjective = _randomGetter(ADJECTIVES);
 api.adverb = _randomGetter(ADVERBS);
@@ -39,6 +39,10 @@ function _randomGetter(words) {
   return function() {
     return words[Math.floor(Math.random() * words.length)];
   };
+}
+
+function _capitalize(s) {
+  return s.slice(0, 1).toUpperCase() + s.slice(1);
 }
 
 module.exports = api;
