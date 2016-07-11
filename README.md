@@ -11,8 +11,8 @@ rnd.realName();
 // 'Takuya Kusatsu'
 // A "real"-looking name that could pass for something in a work of fiction.
 
-rnd.fakeName({minCharacters: 3, maxCharacters: 10});
-// 'Reehozud'
+rnd.fakeName({gender: 'female'});
+// 'Polyth'
 // A "fake"-looking name whose only property is that it should be reasonably pronounceable.
 
 rnd.noun();
