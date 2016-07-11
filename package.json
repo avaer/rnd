@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/modulesio/rnd#readme",
   "dependencies": {
-    "random-word-generator": "^0.9.9",
     "randopeep": "^0.2.5"
   }
 }
