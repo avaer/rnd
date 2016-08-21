@@ -39,9 +39,25 @@ const items = (() => {
 
   [
     {
+      fsKeyPath: [ 'animals', 'birds_antarctica' ],
+      dataKeyPath: [ 'birds' ],
+    },
+    {
+      fsKeyPath: [ 'animals', 'birds_north_america' ],
+      dataKeyPath: [ 'birds' ],
+    },
+    {
       fsKeyPath: [ 'animals', 'common' ],
       dataKeyPath: [ 'animals' ],
-    }
+    },
+    {
+      fsKeyPath: [ 'animals', 'dinosaurs' ],
+      dataKeyPath: [ 'dinosaurs' ],
+    },
+    {
+      fsKeyPath: [ 'animals', 'dogs' ],
+      dataKeyPath: [ 'dogs' ],
+    },
   ].forEach(spec => {
     const data = _getSpecData(spec);
     result.push.apply(result, data);
