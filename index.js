@@ -16,6 +16,40 @@ const VERBS = wordsData.verbs;
 
 const nameGen = new NameGen(roguelikeNames);
 
+const items = (() => {
+  const result = [];
+
+  const _getSpecData = spec => {
+    const fsKeyPath = spec.fsKeyPath;
+    const dataKeyPath = spec.dataKeyPath;
+
+    const requirePath = path.join.apply(path, ['corpora', 'data'].concat(fsKeyPath)) + '.json';
+    const rootData = require(requirePath);
+    const data = _getKeyPath(rootData, dataKeyPath);
+    return data;
+  };
+  const _getKeyPath = (o, keyPath) => {
+    for (let i = 0; i < keyPath.length; i++ ){
+      const key = keyPath[i];
+      o = o[key];
+    }
+
+    return o;
+  };
+
+  [
+    {
+      fsKeyPath: [ 'animals', 'common' ],
+      dataKeyPath: [ 'animals' ],
+    }
+  ].forEach(spec => {
+    const data = _getSpecData(spec);
+    result.push.apply(result, data);
+  });
+
+  return result;
+})();
+
 const api = {};
 
 api.realName = opts => {
@@ -45,6 +79,11 @@ api.noun = _randomGetter(NOUNS);
 api.nouns = _getter(NOUNS);
 api.verb = _randomGetter(VERBS);
 api.verbs = _getter(VERBS);
+api.item = () => {
+  const itemIndex = Math.floor(Math.random() * items.length);
+  const item = items[itemIndex];
+  return item;
+};
 
 function _randomGetter(words) {
   return function() {
