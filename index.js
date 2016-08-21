@@ -38,13 +38,23 @@ api.lastName = () => {
   return _capitalize(name);
 };
 api.adjective = _randomGetter(ADJECTIVES);
+api.adjectives = _getter(ADJECTIVES);
 api.adverb = _randomGetter(ADVERBS);
+api.adverbs = _getter(ADVERBS);
 api.noun = _randomGetter(NOUNS);
+api.nouns = _getter(NOUNS);
 api.verb = _randomGetter(VERBS);
+api.verbs = _getter(VERBS);
 
 function _randomGetter(words) {
   return function() {
     return words[Math.floor(Math.random() * words.length)];
+  };
+}
+
+function _getter(words) {
+  return function() {
+    return words;
   };
 }
 
