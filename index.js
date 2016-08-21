@@ -22,11 +22,21 @@ const items = (() => {
   const _getSpecData = spec => {
     const fsKeyPath = spec.fsKeyPath;
     const dataKeyPath = spec.dataKeyPath;
+    const preprocessor = spec.preprocessor;
 
     const requirePath = path.join.apply(path, ['corpora', 'data'].concat(fsKeyPath)) + '.json';
     const rootData = require(requirePath);
-    const data = _getKeyPath(rootData, dataKeyPath);
-    return data;
+    const data = (() => {
+      if (dataKeyPath) {
+        return _getKeyPath(rootData, dataKeyPath);
+      } else if (dataKeyPath) {
+        return preprocessor(rootData);
+      } else {
+        return [];
+      }
+    })();
+    const lowercaseData = data.map(s => s.toLowerCase());
+    return lowercaseData;
   };
   const _getKeyPath = (o, keyPath) => {
     for (let i = 0; i < keyPath.length; i++ ){
@@ -36,15 +46,27 @@ const items = (() => {
 
     return o;
   };
+  const _birdsPreprocessor = o => {
+    const result = [];
+
+    const birds = o.birds;
+    for (let i = 0; i < birds.length; i++) {
+      const family = birds[i];
+      const members = family.members;
+      result.push.apply(result, members);
+    }
+
+    return result;
+  };
 
   [
     {
       fsKeyPath: [ 'animals', 'birds_antarctica' ],
-      dataKeyPath: [ 'birds' ],
+      preprocessor: _birdsPreprocessor,
     },
     {
       fsKeyPath: [ 'animals', 'birds_north_america' ],
-      dataKeyPath: [ 'birds' ],
+      preprocessor: _birdsPreprocessor,
     },
     {
       fsKeyPath: [ 'animals', 'common' ],
