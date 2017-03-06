@@ -54,7 +54,7 @@ api.setSeed = text => {
 
 function _randomGetter(words) {
   return function() {
-    return words[Math.floor(Math.random() * words.length)];
+    return words[Math.floor(rng() * words.length)];
   };
 }
 
