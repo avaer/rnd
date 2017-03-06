@@ -21,19 +21,19 @@ const api = {};
 api.realName = opts => {
   opts = opts || {};
 
-  const gender = opts.gender !== undefined ? opts.gender : (Math.random() < 0.5 ? 'male' : 'female');
-  const origin = NAME_ORIGINS[Math.floor(Math.random() * NAME_ORIGINS.length)];
+  const gender = opts.gender !== undefined ? opts.gender : (rng() < 0.5 ? 'male' : 'female');
+  const origin = NAME_ORIGINS[Math.floor(rng() * NAME_ORIGINS.length)];
   return randopeep.name({origin, gender, prefix: false, last: true});
 };
 api.fakeName = opts => {
   opts = opts || {};
 
-  const gender = opts.gender || (Math.random() < 0.5 ? 'male' : 'female');
+  const gender = opts.gender || (rng() < 0.5 ? 'male' : 'female');
   return _capitalize(nameGen.getName(gender));
 };
 api.lastName = () => {
   const names = namegen(4);
-  const nameIndex = Math.floor(Math.random() * names.length);
+  const nameIndex = Math.floor(rng() * names.length);
   const name = names[nameIndex];
   return _capitalize(name);
 };
@@ -45,6 +45,11 @@ api.noun = _randomGetter(NOUNS);
 api.nouns = _getter(NOUNS);
 api.verb = _randomGetter(VERBS);
 api.verbs = _getter(VERBS);
+
+let rng = () => Math.random();
+api.setSeed = text => {
+  rng = new Alea(text);
+};
 
 function _randomGetter(words) {
   return function() {
