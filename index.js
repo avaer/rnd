@@ -1,5 +1,6 @@
 "use strict";
 
+const Alea = require('alea');
 const randopeep = require('randopeep');
 const NameGen = require('./lib/namegen-roguelike/namegen.js');
 const namegen = require('./lib/namegen-planet/namegen.js');
